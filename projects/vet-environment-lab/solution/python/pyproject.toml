@@ -1,0 +1,31 @@
+[project]
+name = "vet-environment-lab"
+version = "0.1.0"
+description = "Laboratório local de ambiente com dados veterinários sintéticos"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = ["psycopg[binary]>=3.2,<4", "redis>=5,<7"]
+
+[dependency-groups]
+dev = ["pytest>=8,<10", "ruff>=0.8,<1"]
+
+[project.scripts]
+vet-environment-lab = "vet_environment_lab.cli:main"
+
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/vet_environment_lab"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 88
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I"]

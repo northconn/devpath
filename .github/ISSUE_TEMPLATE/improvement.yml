@@ -1,0 +1,33 @@
+name: Sugestão de melhoria
+description: Proponha uma melhoria pequena e verificável para o curso ou laboratório.
+title: "docs: "
+labels: ["improvement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Necessidade
+      description: Que dificuldade ou oportunidade esta melhoria aborda?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposta
+      description: Descreva o resultado desejado e os arquivos ou partes do curso afetados.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Critérios de aceitação
+      description: Liste evidências observáveis que mostrariam que a proposta está pronta.
+      placeholder: |
+        - [ ] ...
+        - [ ] ...
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Riscos ou alternativas consideradas

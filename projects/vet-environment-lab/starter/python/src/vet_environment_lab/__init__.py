@@ -1,0 +1,1 @@
+"""Ponto inicial do laboratório."""

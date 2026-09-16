@@ -1,0 +1,44 @@
+name: Relato de problema
+description: Registre um comportamento reproduzível do material ou laboratório.
+title: "bug: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use somente dados fictícios. Não cole tokens, conteúdo de `.env` ou dados pessoais.
+  - type: textarea
+    id: summary
+    attributes:
+      label: O que aconteceu?
+      description: Descreva o comportamento observado e por que ele é um problema.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Como reproduzir
+      description: Informe comandos, arquivos ou passos mínimos. Inclua a saída completa sem segredos.
+      placeholder: |
+        1. Execute `...`
+        2. Observe `...`
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Resultado esperado
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Sistema operacional, runtime e versões relevantes obtidas com `--version`.
+    validations:
+      required: true
+  - type: textarea
+    id: investigation
+    attributes:
+      label: Hipótese e tentativas
+      description: O que você já verificou e qual é sua hipótese atual?
