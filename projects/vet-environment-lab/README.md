@@ -56,6 +56,19 @@ uv run pytest
 
 `get` consulta primeiro o Redis. Quando não há um resumo válido no cache, busca o PostgreSQL, que é a fonte de verdade, e repõe o resumo no Redis por 300 segundos.
 
+## Comparação em TypeScript
+
+A [referência em TypeScript](solution/typescript/README.md) repete apenas a validação e o resumo de pacientes fictícios para comparar os ecossistemas, sem banco ou lógica clínica. Com Node.js 24 LTS e npm:
+
+```bash
+cd solution/typescript
+npm ci
+npm run test
+npm run lint
+npm run format
+npm run typecheck
+```
+
 Para parar os containers sem apagar dados:
 
 ```bash
