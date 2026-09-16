@@ -1,0 +1,70 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  markdown-links:
+    name: Links Markdown
+    runs-on: ubuntu-latest
+    steps:
+      # actions/checkout v7, fixado na tag v7 verificada em 2026-09-16.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - name: Verificar links locais
+        run: python scripts/check_markdown_links.py
+
+  python:
+    name: Python (${{ matrix.project.name }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project:
+          - name: referência
+            path: projects/vet-environment-lab/solution/python
+            command: |
+              uv run pytest
+              uv run ruff check .
+              uv run ruff format --check .
+          - name: starter
+            path: projects/vet-environment-lab/starter/python
+            command: uv run vet-environment-lab hello
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      # astral-sh/setup-uv v10.1.0, fixado na tag verificada em 2026-09-16.
+      - uses: astral-sh/setup-uv@bec219d24cd3e171d82865faccec33120bb574f4
+      - name: Sincronizar dependências pelo lockfile
+        working-directory: ${{ matrix.project.path }}
+        run: uv sync --locked
+      - name: Executar verificações
+        working-directory: ${{ matrix.project.path }}
+        run: ${{ matrix.project.command }}
+
+  typescript:
+    name: TypeScript
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/vet-environment-lab/solution/typescript
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      # actions/setup-node v7, fixado na tag v7 verificada em 2026-09-16.
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: projects/vet-environment-lab/solution/typescript/package-lock.json
+      - name: Instalar dependências pelo lockfile
+        run: npm ci
+      - name: Executar testes
+        run: npm run test
+      - name: Verificar lint
+        run: npm run lint
+      - name: Verificar formatação
+        run: npm run format
+      - name: Verificar tipos
+        run: npm run typecheck
