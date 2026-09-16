@@ -108,3 +108,7 @@ def main() -> None:
             file=sys.stderr,
         )
         raise SystemExit(1) from error
+
+
+if __name__ == "__main__":
+    main()

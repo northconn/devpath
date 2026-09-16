@@ -10,6 +10,12 @@ Tempo é uma estimativa; a evidência abaixo é o critério de avanço.
 - [ ] U3 — Diferenciei DNS, conexão recusada, timeout e erro HTTP usando evidências.
 - [ ] U4 — Subi um container, li logs e parei o Compose sem remover volumes.
 - [ ] U5 — Gravei um paciente sintético no PostgreSQL e confirmei o cache Redis com TTL.
+- [ ] U6 — Selecionei `.venv`, usei breakpoint e documentei a causa de um bug preparado.
+- [ ] U7 — Trabalhei em branch, revisei staging e resolvi um conflito pequeno com segurança.
+- [ ] U8 — Executei Python por `uv` e protegi uma regra com teste.
+- [ ] U9 — Rodei os scripts TypeScript e expliquei tipo versus validação em runtime.
+- [ ] U10 — Fiz um teste vermelho virar verde e investiguei uma falha de qualidade/CI.
+- [ ] U11 — Entreguei o desafio com evidências, PR e retrospectiva.
 
 ## Registro do aluno
 
